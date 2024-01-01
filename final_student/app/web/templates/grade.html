@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../static/plu/bootstrap-3.4.1/css/bootstrap.css">
+
+</head>
+<body>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="grade.html">成绩查询</a></li>
+  <li role="presentation"><a href="person.html">个人信息</a></li>
+      <li role="presentation"><a href="course.html">选课系统</a></li>
+</ul>
+    <div class="container">
+        <h1>成绩查询</h1>
+        <table class="table table-bordered">
+       <tr>
+            <th class="lead">课程号</th>
+            <th class="lead">课程名</th>
+            <th class="lead">课程学分</th>
+            <th class="lead">课程学时</th>
+            <th class="lead">任课教师</th>
+            <th class="lead">成绩</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if tables %}
+        {% for table in tables %}
+        <tr>
+           <td class="lead">{{ course.no }}</td>
+           <td class="lead">{{ course.name }}</td>
+           <td class="lead">{{ course.credit }}</td>
+           <td class="lead">{{ course.class_hour }}</td>
+           <td class="lead">{{ course.teacher }}</td>
+           {% if table.Grade %}
+           <td class="lead">{{ course.grade }}</td>
+           {% else %}
+           <td class="lead">暂无</tr>
+           {% endif %}
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
