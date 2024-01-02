@@ -47,12 +47,7 @@ def add_user():
         session.clear()
 
         response_data = {"msg": "添加成功"}
-        response_data["no"] = User.no
-        response_data["name"] = User.name
-        response_data["title"] = User.title
-        response_data["dept"] = User.dept
-        response_data["major"] = User.major
-        response_data["grade"] = User.grade
+
 
     else:
         # 如果验证失败，可以提示用户错误信息，重新登录

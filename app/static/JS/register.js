@@ -6,7 +6,7 @@ document.getElementById("register-btn").addEventListener("click", function(event
   var password = document.getElementById("password").value;
   var name = document.getElementById("name").value;
   var sex = document.getElementById("sex").value; // 获取性别的值
-  var grade = global; // 获取年级的值
+  var grade = global.toString(); // 获取年级的值
   var dept = document.getElementById("dept").value; // 获取学院/部门的值
   var major = document.getElementById("major").value; // 获取专业的值
   var title = document.getElementById("title").value; // 获取职称的值
@@ -20,6 +20,7 @@ document.getElementById("register-btn").addEventListener("click", function(event
     "major": major,
     "title": title
   };
+  console.log(JSON.stringify(data));
 
   fetch("http://127.0.0.1:8000/student/add", {
     method: "POST",
