@@ -1,0 +1,194 @@
+/* 自定义样式 */
+
+/* 调整整体布局 */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* 调整容器宽度 */
+.form-signin {
+  max-width: 400px;
+}
+
+/* 调整表单元素之间的间距 */
+.form-signin .form-group {
+  margin-bottom: 20px;
+}
+
+/* 调整复选框位置 */
+.form-signin .checkbox {
+  text-align: left;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.container-fluid {
+background-color: #ffffff;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-floating label {
+color: #495057;
+}
+
+.form-control:focus {
+box-shadow: none;
+border-color: #712cf9;
+}
+
+.btn-primary {
+background-color: #712cf9;
+border-color: #712cf9;
+font-weight: 600;
+}
+
+.btn-primary:hover {
+background-color: #6528e0;
+border-color: #6528e0;
+}
+
+.btn-primary:focus {
+box-shadow: 0 0 0 0.25rem rgba(112, 44, 249, 0.5);
+}
+
+.btn-primary:active {
+background-color: #5a23c8;
+border-color: #5a23c8;
+}
+
+.nav-link {
+color: #495057;
+}
+
+.nav-link:hover {
+color: #212529;
+}
+
+.link-secondary {
+color: #6c757d;
+}
+
+.link-secondary:hover {
+color: #212529;
+}
+
+.py-4 {
+padding-top: 1rem;
+padding-bottom: 1rem;
+}
+
+.mb-3 {
+margin-bottom: 1rem;
+}
+
+.w-100 {
+width: 100%;
+}
+
+.border-bottom {
+border-bottom: 1px solid #dee2e6;
+}
+
+.form-select {
+background-color: #ffffff;
+border: 1px solid #ced4da;
+border-radius: 0.25rem;
+}
+
+.form-select:focus {
+box-shadow: none;
+border-color: #712cf9;
+}
+
+.form-select option {
+color: #212529;
+}
+
+.form-select[disabled] {
+background-color: #f5f5f5;
+}
+
+.form-select[disabled]:hover {
+cursor: not-allowed;
+}
+
+.form-select[aria-invalid="true"] {
+border-color: #dc3545;
+}
+
+.form-select[aria-invalid="true"]:focus {
+box-shadow: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-outline-primary {
+color: #712cf9;
+border-color: #712cf9;
+}
+
+.btn-outline-primary:hover {
+color: #ffffff;
+background-color: #712cf9;
+border-color: #712cf9;
+}
+
+.btn-outline-primary:focus {
+box-shadow: 0 0 0 0.25rem rgba(112, 44, 249, 0.5);
+}
+
+.btn-outline-primary:active {
+color: #ffffff;
+background-color: #5a23c8;
+border-color: #5a23c8;
+}
+
+.text-end {
+text-align: right;
+}
+
+.form-check-input:checked {
+background-color: #712cf9;
+border-color: #712cf9;
+}
+
+.text-body-tertiary {
+color: #212529;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+background-color: #f5f5f5;
+opacity: 0.5;
+cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+.col-md-3 {
+max-width: 200px;
+}
+}
+
+@media (max-width: 767px) {
+.nav-link {
+margin-bottom: 10px;
+}
+
+.text-end {
+margin-top: 10px;
+}
+}

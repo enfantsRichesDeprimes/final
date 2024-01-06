@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../static/plu/bootstrap-3.4.1/css/bootstrap.css">
+
+</head>
+<body>
+<ul class="nav nav-tabs">
+  <li role="presentation" "><a href="grade.html">成绩查询</a></li>
+  <li role="presentation"class="active"><a href="person.html">个人信息</a></li>
+      <li role="presentation"><a href="course.html">开课信息</a></li>
+</ul>
+    <div class="container">
+        <h1>个人信息</h1>
+        <table class="table table-bordered">
+    <div class="container mb-4"></div>
+        <p class="lead">姓名：{{ user.name }}</p>
+        <p class="lead">学号：{{ user.no }}</p>
+        <p class="lead">性别：{{ user.sex }}</p>
+        <p class="lead">入学年份：{{ user.grade }}年</p>
+        <p class="lead">专业：{{ user.major }}</p>
+        <p class="lead">学院：{{ user.dept }}</p>
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{{ url_for('student_info', change=1)}}" role="button">修改密码</a>
+        </p>
+        {% else %}
+        <div class="container col-sm-4">
+        <form action="/student_info" method="POST" class="form-signin">
+            <br><br>
+            <div class="text-center mb-4">
+            <h1>修改密码</h1>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning" role="alert">
+                <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="form-label-group  mb-2">
+                <label for="inputText">原密码</label>
+                <input type="password" name="oldpassword" id="inputPassword" class="form-control" placeholder="Old Password" required autofocus>
+            </div>
+            <div class="form-label-group  mb-2">
+            <label for="inputPassword">新密码</label>
+            <input type="password" name="newpassword" id="inputPassword" class="form-control" placeholder="New Password" required>
+            </div>
+            <div class="form-label-group  mb-3">
+                <label for="inputPassword">再次新密码</label>
+                <input type="password" name="newpassword2" id="inputPassword" class="form-control" placeholder="Repet Password" required>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">确认修改</button>
+            <p class="mt-5 mb-3 text-muted text-center">&copy; DropDataBase 2019-2020</p>
+        </form>
+        </div>
+        </table>
+    </div>
+
+</body>
+</html>

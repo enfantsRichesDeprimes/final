@@ -43,6 +43,11 @@ loginBtn.addEventListener("click", function(event) {
           } else {
               window.location.href = "/";
           }
+           if (res.user_info.title == "admin") {
+              window.location.href = "/allcourse";
+          } else {
+              window.location.href = "/";
+          }
       } else {
           alert(res.msg);
       }

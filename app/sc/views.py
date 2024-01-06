@@ -1,11 +1,13 @@
-from flask import jsonify,session
+from flask import jsonify, session
 from app.sc import sc_bp
 from app.sc.models import Sc
 from app.exts import db
 import os
+
 current_path = os.path.dirname(__file__)
 ttf_file_path = os.path.join(current_path, "static", "ttf", "ziti.ttf")
-from .forms import ScForm, DeleteScForm, UpdateScForm, SearchByStudentNoForm, SearchByCourseNoForm
+from .forms import ScForm, DeleteScForm, UpdateScForm, SearchByStudentNoForm, SearchByCourseNoForm, DeletescForm
+
 
 @sc_bp.route('/add', methods=['POST'])
 def add_sc():
@@ -56,7 +58,7 @@ def update_sc():
         # 在这里处理更新选课关系逻辑，例如将表单提交的数据保存到数据库中
         student_no = form.data["student_no"]
         course_no = form.data["course_no"]
-        sc = Sc.query.filter_by(student_id=student_no,course_id=course_no).first()
+        sc = Sc.query.filter_by(student_no=student_no,course_no=course_no).first()
         if sc is None:
             return jsonify({"msg": "更新失败，选课关系不存在"})
         else:
@@ -64,13 +66,11 @@ def update_sc():
             db.session.commit()
             session.clear()
             response_data = {"msg": "更新成功"}
-            return jsonify(response_data)
 
     else:
         # 如果验证失败，可以提示用户错误信息，重新登录
         response_data = {"msg": "更新失败"}
         response_data.update(form.errors)
-        return jsonify(response_data)
 
 @sc_bp.route('/search_by_student_no', methods=['POST'])
 def search_by_student_no():
@@ -96,26 +96,17 @@ def search_by_course_no():
     if form.validate_on_submit():
         # 在这里处理按课程编号查询选课关系逻辑，例如将表单提交的数据保存到数据库中
         course_no = form.data["no"]
-        scs = Sc.query.filter_by(course_id=course_no).all()  # 获取所有匹配的对象
-        if not scs:  # 判断列表是否为空
+        sc = Sc.query.filter_by(course_no=course_no).all()
+        if sc is None:
             return jsonify({"msg": "查询失败，选课关系不存在"})
         else:
             response_data = {"msg": "查询成功"}
-            response_data["scs"] = []
-            for sc in scs:
-                response_data["scs"].append({
-                    "id": sc.id,
-                    "student_id": sc.student_id,
-                    "course_id": sc.course_id,
-                    "grade": sc.grade
-                })
-            return jsonify(response_data)
+            response_data["sc"] = sc
+
     else:
         # 如果验证失败，可以提示用户错误信息，重新登录
         response_data = {"msg": "查询失败"}
         response_data.update(form.errors)
-        return jsonify(response_data)
-
 
 @sc_bp.route('/all', methods=['POST'])
 def all_sc():

@@ -63,14 +63,8 @@ class AddUserForm(FlaskForm):
 
 class DeleteUserForm(FlaskForm):
     """删除用户表单验证"""
-    no = StringField("学号/工号", validators=[DataRequired("学号/工号不能为空"), Length(max=255)])
+    id = IntegerField("学号/工号", validators=[DataRequired("学号/工号不能为空")])
 
-    def validate_no(self, field):
-        """检查学号/工号是否存在"""
-        from .models import User
-        user = User.query.filter_by(no=field.data).first()
-        if not user:
-            raise ValidationError("学号/工号不存在")
 
 class EditUserForm(FlaskForm):
     """编辑用户表单验证"""
