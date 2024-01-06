@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../static/plu/bootstrap-3.4.1/css/bootstrap.css">
+   <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif; /* 更改字体 */
+            color: #333; /* 更改字体颜色 */
+        }
+        .nav-tabs {
+            margin-bottom: 20px;
+            background-color: #6c757d; /* 为导航标签添加背景色 */
+            border-radius: 5px; /* 圆化导航标签的角落 */
+        }
+        .nav-tabs a {
+            color: white; /* 更改导航标签中的文本颜色 */
+        }
+        h1 {
+            color: #6c757d;
+            margin-bottom: 20px;
+            text-align: center; /* 将标题居中 */
+        }
+        .table {
+            box-shadow: 0 0 10px rgba(0,0,0,.1);
+            border-collapse: collapse; /* 合并表格的边框 */
+        }
+        .table th, .table td {
+            padding: 15px; /* 为表格单元格添加填充 */
+        }
+        .lead {
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav nav-tabs">
+  <li role="presentation" ><a href="grade.html">成绩查询</a></li>
+  <li role="presentation"><a href="person.html">个人信息</a></li>
+    <li role="presentation"><a href="course.html">选课系统</a></li>
+    <li role="presentation"class="active"><a href="course_out.html">退课系统</a></li>
+</ul>
+    <div class="container">
+        <h1>退课系统</h1>
+        <table class="table table-bordered">
+      <tr>
+            <th class="lead">课程号</th>
+            <th class="lead">课程名</th>
+            <th class="lead">课程学分</th>
+            <th class="lead">课程学时</th>
+            <th class="lead">教师</th>
+            <th class="lead"></th>
+        </tr>
+            </thead>
+            <tbody>
+        {% if tables %}
+        {% for table in tables %}
+        <tr>
+           <td class="lead">{{ course.no }}</td>
+           <td class="lead">{{ course.name }}</td>
+           <td class="lead">{{ course.credit }}</td>
+           <td class="lead">{{ course.class_hour }}</td>
+           <td class="lead">{{ course.teacher }}</td>
+          <td class="lead">
+               <a href="{{ url_for('course_drop', CourseNum=table.CourseNum) }}" class="btn btn-outline-danger btn-sm" role="button">退选</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </table>
+    </div>
+
+</body>
+</html>
