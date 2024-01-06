@@ -1,11 +1,13 @@
-from flask import jsonify,session
+from flask import jsonify, session
 from app.sc import sc_bp
 from app.sc.models import Sc
 from app.exts import db
 import os
+
 current_path = os.path.dirname(__file__)
 ttf_file_path = os.path.join(current_path, "static", "ttf", "ziti.ttf")
-from .forms import ScForm, DeleteScForm, UpdateScForm, SearchByStudentNoForm, SearchByCourseNoForm
+from .forms import ScForm, DeleteScForm, UpdateScForm, SearchByStudentNoForm, SearchByCourseNoForm, DeletescForm
+
 
 @sc_bp.route('/add', methods=['POST'])
 def add_sc():
@@ -28,6 +30,7 @@ def add_sc():
         response_data = {"msg": "添加失败"}
         response_data.update(form.errors)
 
+
 @sc_bp.route('/delete', methods=['POST'])
 def delete_sc():
     form = DeleteScForm()
@@ -35,7 +38,7 @@ def delete_sc():
         # 在这里处理删除选课关系逻辑，例如将表单提交的数据保存到数据库中
         student_no = form.data["student_no"]
         course_no = form.data["course_no"]
-        sc = Sc.query.filter_by(student_no=student_no,course_no=course_no).first()
+        sc = Sc.query.filter_by(student_no=student_no, course_no=course_no).first()
         if sc is None:
             return jsonify({"msg": "删除失败，选课关系不存在"})
         else:
@@ -49,6 +52,7 @@ def delete_sc():
         response_data = {"msg": "删除失败"}
         response_data.update(form.errors)
 
+
 @sc_bp.route('/update', methods=['POST'])
 def update_sc():
     form = UpdateScForm()
@@ -56,7 +60,7 @@ def update_sc():
         # 在这里处理更新选课关系逻辑，例如将表单提交的数据保存到数据库中
         student_no = form.data["student_no"]
         course_no = form.data["course_no"]
-        sc = Sc.query.filter_by(student_no=student_no,course_no=course_no).first()
+        sc = Sc.query.filter_by(student_no=student_no, course_no=course_no).first()
         if sc is None:
             return jsonify({"msg": "更新失败，选课关系不存在"})
         else:
@@ -69,6 +73,7 @@ def update_sc():
         # 如果验证失败，可以提示用户错误信息，重新登录
         response_data = {"msg": "更新失败"}
         response_data.update(form.errors)
+
 
 @sc_bp.route('/search_by_student_no', methods=['POST'])
 def search_by_student_no():
@@ -88,6 +93,7 @@ def search_by_student_no():
         response_data = {"msg": "查询失败"}
         response_data.update(form.errors)
 
+
 @sc_bp.route('/search_by_course_no', methods=['POST'])
 def search_by_course_no():
     form = SearchByCourseNoForm()
@@ -106,6 +112,7 @@ def search_by_course_no():
         response_data = {"msg": "查询失败"}
         response_data.update(form.errors)
 
+
 @sc_bp.route('/all', methods=['POST'])
 def all_sc():
     sc = Sc.query.all()
@@ -115,3 +122,44 @@ def all_sc():
         response_data = {"msg": "查询成功"}
         response_data["sc"] = sc
 
+
+@sc_bp.route('/search_sc/<int:sc_student_id>', methods=['POST'])
+def search_sc(sc_student_id):
+    scs = Sc.query.filter_by(student_id=sc_student_id)
+    if scs is None:
+        return jsonify({"msg": "查看失败，记录不存在"})
+    else:
+        response_data = {"msg": "查看成功"}
+        response_data["scs"] = []
+        for sc in scs:
+            response_data["scs"].append({
+                "id": sc.id,
+                "student_id": sc.student_id,
+                "course_id": sc.course_id,
+                "grade": sc.grade,
+            })
+
+    return jsonify(response_data)
+
+
+@sc_bp.route('/deletesc/<int:sc_id>', methods=['POST'])
+def delete_Sc(sc_id):
+    form = DeletescForm(csrf_enabled=False)
+    if form.validate_on_submit():
+        # 在这里处理删除课程逻辑，例如将表单提交的数据保存到数据库中
+        id = sc_id
+        sc = Sc.query.filter_by(id=id).first()
+        if sc is None:
+            return jsonify({"msg": "删除失败，记录不存在"})
+        else:
+            db.session.delete(sc)
+            db.session.commit()
+            session.clear()
+            response_data = {"msg": "删除成功"}
+
+    else:
+        # 如果验证失败，可以提示用户错误信息，重新登录
+        response_data = {"msg": "删除失败"}
+        response_data.update(form.errors)
+
+    return jsonify(response_data)

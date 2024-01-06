@@ -38,7 +38,11 @@ loginBtn.addEventListener("click", function(event) {
               localStorage.removeItem('username');
               localStorage.removeItem('password');
           }
-          window.location.href = "/";
+           if (res.user_info.title == "admin") {
+              window.location.href = "/allcourse";
+          } else {
+              window.location.href = "/";
+          }
       } else {
           alert(res.msg);
       }

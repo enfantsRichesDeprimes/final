@@ -29,12 +29,11 @@ class SearchByCourseNoForm(FlaskForm):
 
 # 删除课程表单
 class DeleteCourseForm(FlaskForm):
-    no = StringField('课程编号', validators=[DataRequired("课程编号不能为空")])
+    id = IntegerField('课程编号', validators=[DataRequired("课程编号不能为空")])
 
 
 # 更新课程表单
 class UpdateCourseForm(CourseForm):
-    no = StringField('课程编号', validators=[DataRequired("课程编号不能为空")])
     name = StringField('课程名称', validators=[DataRequired("课程名称不能为空")])
     credit = IntegerField('学分', validators=[DataRequired("学分不能为空"), NumberRange(min=0)])
     class_hour = IntegerField('学时', validators=[DataRequired("课时不能为空"), NumberRange(min=0)])

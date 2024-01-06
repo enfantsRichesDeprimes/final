@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>查找用户</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="{{ url_for('static', filename='CSS/bootstrap.min.css')}}" rel="stylesheet">
+      <script src="{{ url_for('static', filename='JS/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ url_for('static', filename='JS/color-modes.js') }}"></script>
+      <link href="{{ url_for('static', filename='CSS/allcourse.css') }}" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+
+<main>
+  <div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <span class="fs-4">教务系统</span>
+        </a>
+      </div>
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="allcourse" class="nav-link px-2">全部课程</a></li>
+        <li><a href="createcourse" class="nav-link px-2">创建课程</a></li>
+        <li><a href="searchcourse" class="nav-link px-2">查找课程</a></li>
+        <li><a href="alluser" class="nav-link px-2">全部用户</a></li>
+        <li><a href="register" class="nav-link px-2">创建用户</a></li>
+        <li><a href="searchuser" class="nav-link px-2 link-secondary">查找用户</a></li>
+        <li><a href="searchsc" class="nav-link px-2">选课记录</a></li>
+      </ul>
+
+      <div class="col-md-3 text-end">
+        <button type="button" class="btn btn-outline-primary me-2">登录</button>
+        <button type="button" class="btn btn-primary" onclick="redirectToLogin()">退出登录</button>
+        <script>
+          function redirectToLogin() {
+          window.location.href = "login";
+          }
+        </script>
+
+      </div>
+    </header>
+  </div>
+
+
+
+<div class="container">
+<h2>用户列表</h2>
+  <form>
+    <div class="col-md-6">
+       <div class="input-group">
+    <input id="searchuser-input" class="form-control rounded-pill me-2" type="text" name="user_no" placeholder="搜索用户">
+    <button class="btn btn-outline-primary" type="submit" id="searchuser-btn">搜索</button>
+    </div>
+    </div>
+  </form>
+</div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>账号</th>
+      <th>姓名</th>
+      <th>密码</th>
+      <th>性别</th>
+      <th>入校时间</th>
+      <th>学院/部门</th>
+      <th>专业</th>
+      <th>身份</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <script src="{{ url_for('static', filename='JS/searchuser.js') }}"></script>
+
+  </tbody>
+
+</table>
+
+</main>
+    </body>
+</html>

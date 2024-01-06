@@ -1,7 +1,7 @@
 from app.exts import db
 
 class Sc(db.Model):
-    __tablename__ = 'sc'
+    __tablename__ = "sc"
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.String(255), db.ForeignKey('user.no'), nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
