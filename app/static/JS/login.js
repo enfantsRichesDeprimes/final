@@ -38,7 +38,8 @@ loginBtn.addEventListener("click", function(event) {
               localStorage.removeItem('username');
               localStorage.removeItem('password');
           }
-          window.location.href = "/";
+
+          window.location.href = "/teacher";
       } else {
           alert(res.msg);
       }
