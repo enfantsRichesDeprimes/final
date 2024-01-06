@@ -38,8 +38,11 @@ loginBtn.addEventListener("click", function(event) {
               localStorage.removeItem('username');
               localStorage.removeItem('password');
           }
-
-          window.location.href = "/teacher";
+          if (res.user_info.title == "teacher") {
+              window.location.href = "/teacher";
+          } else {
+              window.location.href = "/";
+          }
       } else {
           alert(res.msg);
       }
