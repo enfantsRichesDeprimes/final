@@ -1,6 +1,23 @@
 var returnBtn = document.getElementById("return-btn");
 var changePasswordBtn = document.getElementById('change-password-btn');
 
+var sexElement = document.getElementById("sex");
+var titleElement = document.getElementById("title");
+console.log(sexElement); // 检查 sexElement 是否为 null
+console.log(titleElement); // 检查 titleElement 是否为 null
+
+
+   // 判断并修改内容
+    if (sexElement.textContent === "male") {
+        document.getElementById("sex").textContent = "男";
+    } else {
+        document.getElementById("sex").textContent = "女";
+    }
+
+    if (titleElement.textContent === "teacher") {
+        document.getElementById("title").textContent = "老师";
+    }
+
 returnBtn.onclick = function() {
     window.location.href = "http://127.0.0.1:8000/teacher";
 };
