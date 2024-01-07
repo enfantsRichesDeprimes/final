@@ -34,10 +34,17 @@ document.getElementById("register-btn").addEventListener("click", function(event
     console.log(res);
     // 在这里可以执行根据服务器响应而执行的逻辑
     if (res.msg == "添加成功") {
-      window.location.href = "/register";
-    } else {
-      alert(res.msg);
-    }
+  if (title == "teacher") {
+    window.location.href = "/teacher";
+  } else if (title == "admin") {
+    window.location.href = "/allcourse";
+  } else {
+    window.location.href = "/";
+  }
+} else {
+  alert(res.msg);
+}
+
   })
 });
 

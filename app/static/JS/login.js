@@ -32,7 +32,6 @@ loginBtn.addEventListener("click", function(event) {
               localStorage.setItem('dept', res.user_info.dept)
               localStorage.setItem('major', res.user_info.major)
               localStorage.setItem('grade', res.user_info.grade)
-
           } else {
               localStorage.removeItem('rememberMe');
               localStorage.removeItem('username');
@@ -40,10 +39,7 @@ loginBtn.addEventListener("click", function(event) {
           }
           if (res.user_info.title == "teacher") {
               window.location.href = "/teacher";
-          } else {
-              window.location.href = "/";
-          }
-           if (res.user_info.title == "admin") {
+          } else if (res.user_info.title == "admin") {
               window.location.href = "/allcourse";
           } else {
               window.location.href = "/";
@@ -58,7 +54,6 @@ loginBtn.addEventListener("click", function(event) {
 
 registerBtn.addEventListener("click", function(event) {
   // 跳转到注册页面
-    console.log("register");
     event.preventDefault();
     window.location.href = "register";
 });

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem('rememberMe') === 'true') {
     // 获取保存的用户信息
     var no = localStorage.getItem('no');
+    console.log("no: " + no);
     var name = localStorage.getItem('name');
     var sex = localStorage.getItem('sex');
     var title = localStorage.getItem('title');
@@ -23,4 +24,3 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = "login";
   }
 });
-

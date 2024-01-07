@@ -41,7 +41,7 @@ document.getElementById("createcourse-btn").addEventListener("click", function(e
     console.log(res);
     // 在这里可以执行根据服务器响应而执行的逻辑
     if (res.msg == "添加成功") {
-      window.location.href = "/";
+      window.location.href = "/allcourse";
     } else {
       alert(res.msg);
     }

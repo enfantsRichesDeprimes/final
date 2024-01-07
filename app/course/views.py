@@ -19,21 +19,10 @@ def add_course():
         db.session.add(course)
         db.session.commit()
         session.clear()
+        response_data = {
+            "msg": "添加成功",
+        }
 
-        response_data = {"msg": "添加成功"}
-        response_data["no"] = Course.id
-        response_data["name"] = Course.name
-        response_data["credit"] = Course.credit
-        response_data["class_hour"] = Course.class_hour
-        response_data["teacher"] = Course.teacher
-        response_data["dept"] = Course.dept
-        response_data["major"] = Course.major
-        response_data["grade"] = Course.grade
-        response_data["semester"] = Course.semester
-        response_data["time"] = Course.time
-        response_data["place"] = Course.place
-        response_data["number"] = Course.number
-        response_data["max_number"] = Course.max_number
 
     else:
         # 如果验证失败，可以提示用户错误信息，重新登录
