@@ -9,7 +9,6 @@
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="教务系统">
     <script src="{{ url_for('static', filename='JS/index.js') }}"></script>
-    <script src="{{ url_for('static', filename='JS/teacher.js') }}"></script>
     <link href="{{ url_for('static', filename='CSS/common.css') }}" rel="stylesheet">
 
 <!--    <link rel="stylesheet" type="text/css" href="common.css">-->
@@ -91,10 +90,7 @@
     <div class='title' style="margin-right: 200px;width: 300px;clear: both;" >
       <div class='title_inner' >
         <h1>
-          欢迎：
-        </h1>
-        <h1>
-          Welcome to Educational management system!
+          欢迎你，老师！
         </h1>
       </div>
     </div>
@@ -105,7 +101,7 @@
               <img src='/static/img/7.png' style="width: 20px;height: 20px">
          </div>
           <h1>
-            Hello! Welcome!
+            你好! 欢迎!
           </h1>
         </div>
         <input id='message-1' type='checkbox'>
@@ -113,17 +109,15 @@
           <div class='container_ui__item' style="margin-top: 0px;width: 550px;height: 120px">
             <div class='face'>
               <img src='/static/img/cm.png' style="width: 81px;height: 81px">
-              <div class='color_bar one'  style="height: 120px">
+              <div class='color_bar one'  style="height: 120px" onclick="window.location.href='http://127.0.0.1:8000//scinfo'">
                 <p>Now Active</p>
-                <span>The students are selected for the course management</span>
               </div>
             </div>
             <h2>
                学生选课管理
             </h2>
             <div class='dot active'></div>
-            <h3><a href="http://127.0.0.1:8000/scinfo" id="scLink" target="_blank">学生选课管理</a></h3>
-            <h4>Click the mouse enter The students are selected for the course management!</h4>
+            <h4>点击左侧进入!</h4>
           </div>
         </label>
       </div>
@@ -133,17 +127,15 @@
           <div class='container_ui__item' style="height: 150px;margin-top: 50px;width: 500px;margin-left: 150px" >
             <div class='face'>
               <img src='/static/img/vi.png' style="width: 81px;height: 81px;margin-top: 40px">
-              <div class='color_bar two'  style="height: 150px;">
+              <div class='color_bar two'  style="height: 150px;" onclick="window.location.href='http://127.0.0.1:8000/courseinfo'">
                 <p>Now Active</p>
-                <span>Message-Modification</span>
               </div>
             </div>
             <h2>
                查看课程信息
             </h2>
             <div class='dot active'></div>
-            <h3><a href="http://127.0.0.1:8000/courseinfo" id="courseLink" target="_blank">查看课程信息</a></h3>
-            <h4>Click the mouse enter Viewing the course information!</h4>
+            <h4>点击左侧进入!</h4>
           </div>
         </label>
 
@@ -152,9 +144,8 @@
           <div class='container_ui__item' style="height: 150px;margin-top: 50px;width: 500px;">
             <div class='face'>
              <img src='/static/img/7.png' style="width: 81px;height: 81px;margin-top: 40px">
-              <div class='color_bar three'  style="height: 150px;">
+              <div class='color_bar three'  style="height: 150px;" onclick="window.location.href='http://127.0.0.1:8000/personinfo'">
                 <p>Now Active</p>
-                <span>Message-Modification</span>
               </div>
             </div>
             <h2>
@@ -162,8 +153,7 @@
             </h2>
             <div class='dot active'></div>
             <script src="{{ url_for('static', filename='JS/index.js') }}"></script>
-            <h3><a href="http://127.0.0.1:8000/personinfo" id="indexLink" target="_blank">个人信息管理</a></h3>
-            <h4>Click the mouse enter Personal information!</h4>
+            <h4>点击左侧进入!</h4>
           </div>
         </label>
     </div>

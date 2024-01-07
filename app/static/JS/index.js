@@ -11,10 +11,20 @@ document.addEventListener('DOMContentLoaded', function() {
     var grade = localStorage.getItem('grade');
 
     // 加载登录信息
+    var sexElement = document.getElementById('sex');
+    var titleElement = document.getElementById('title');
+    sexElement.textContent = sex;
+    titleElement.textContent = title;
     document.getElementById('no').textContent = no;
     document.getElementById('name').textContent = name;
-    document.getElementById('sex').textContent = sex;
-    document.getElementById('title').textContent = title;
+    if (sexElement.textContent === 'male') {
+        sexElement.textContent = '男';
+    } else {
+        sexElement.textContent = '女';
+    }
+    if (titleElement.textContent === 'teacher') {
+        titleElement.textContent = '老师';
+    }
     document.getElementById('dept').textContent = dept;
     document.getElementById('major').textContent = major;
     document.getElementById('grade').textContent = grade;
